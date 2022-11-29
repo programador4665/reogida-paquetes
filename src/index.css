@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  gap: 15px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-login__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-login__item p {
+  color: red;
+  font-size: 12px;
+}
+
+.contenedor-imagen {
+  width: 300px;
+}
+
+.contenedor-imagen img {
+  width: 100%;
+}
+
+.contenedor-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,77 @@
+.contenedor-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login {
+    width: 400px;
+    height: 300px;
+    margin: 10px 10px 50 px; 
+    background-color: #ffffff;
+    box-shadow: 0 3px 13px 1px rgb(0 0 0 /45%); 
+  }
+  
+  .form-labels{
+    float: left;
+    display: flex; 
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    margin-right: 15px;
+    margin-bottom: 5px; 
+    padding-left: 60px;
+  }
+
+  .form-login__item {
+    float: left;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+  }
+
+.form-boton{
+    float: right;
+    display: flex; 
+    flex-direction: column;
+    margin-right: 40px;
+   
+}
+
+  .form-login__item p {
+    color: red;
+    font-size: 12px;
+    
+  }
+  
+
+  input,label{
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+ 
+  label{
+    padding-top: 5px;
+  }
+
+h6{
+    text-align: left;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+.registrarse {
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 30px;  
+    margin-right: 50px; 
+}
+
+.recuadro{
+  border-color: rgba(69, 66, 66, 0.507);
+  border-style:inset;
+  margin: 5px;
+}

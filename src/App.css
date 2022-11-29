@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  gap: 15px;
+}
+
+.navbar-brand{
+  padding-left: 30px;
+}
+
+.nav-item{
+  padding-right: 30px;
+}
