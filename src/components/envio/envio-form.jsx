@@ -1,19 +1,35 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react"
+import axios from "axios"
 import "../hojas-de-estilos/envio-form.css"
 
 
-const EnvioForm = ({ data }) => {
+const EnvioForm = ({ data, envioId }) => {
     const [isEdit, setIsEdit] = useState(false)
 
-   
     const { register, formState: { errors }, handleSubmit, setValue } = useForm();
 
     const customSubmit = (dataForm) => {
+        const envioObject = {
+            fecha: dataForm.fecha,
+            estado: dataForm.estado,
+            ciudad_entrega: dataForm.ciudad_entrega,
+            dir_entrega: dataForm.dir_entrega,
+            ciudad_recogida: dataForm.ciudad_recogida,
+            dir_recogida: dataForm.dir_recogida,
+            nombre: dataForm.nombre,
+            cedula: dataForm.cedula,
+            userId: "1234",
+        }
+
         if (isEdit) {
-            console.log('Here goes the edit logic')
+            axios
+                .put("http://localhost:4000/envios/edit/" + envioId, envioObject)
+                .then(response => console.log(response.data))
         } else {
-            console.log('Here goes create logic')
+            axios
+                .post("http://localhost:4000/envios/create", envioObject)
+                .then(response => console.log(response.data))
         }
         console.log('dataForm', dataForm)
     }
@@ -25,11 +41,15 @@ const EnvioForm = ({ data }) => {
             setValue('fecha', data.fecha)
             setValue('ciudad_entrega', data.ciudad_entrega)
             setValue('dir_entrega', data.dir_entrega)
+            setValue('ciudad_recogida', data.ciudad_recogida)
+            setValue('dir_recogida', data.dir_recogida)
+            setValue('nombre', data.nombre)
+            setValue('cedula', data.cedula)
             setValue('estado', data.estado)
         }
-    })
+    }, [])
 
-    
+
     return (
         <>
             <form className="form" onSubmit={handleSubmit(customSubmit)}>
@@ -37,19 +57,20 @@ const EnvioForm = ({ data }) => {
                 <div className="form__item">
                     <label>Fecha</label>
                     <input
-                        type="text"
+                        type="date"
                         size={"10"}
                         {...register("fecha", { required: true })}
                         aria-invalid={errors.fecha ? "true" : "false"}
                     />
                     {errors.fecha && <p>Field required</p>}
-                     <input className="fecha" type="date"/>
-                     <label>Hora</label>
+                    
+                    
+                    {/* <label>Hora</label>
                     <input
                         type="time"
                         {...register("hora", { required: true })}
                         aria-invalid={errors.hora ? "true" : "false"}
-                    />
+                    /> */}
                 </div>
                 </div>
                
@@ -79,10 +100,10 @@ const EnvioForm = ({ data }) => {
                     <div className="form__item">
                         <label>Nombre destinatario</label>
                         <input
-                            {...register("nombre_destinatario", { required: true })}
-                            aria-invalid={errors.nombre_destinatario ? "true" : "false"}
+                            {...register("nombre", { required: true })}
+                            aria-invalid={errors.nombre ? "true" : "false"}
                         />
-                        {errors.nombre_destinatario && <p>Field required</p>}
+                        {errors.nombre && <p>Field required</p>}
                     </div>    
                 </div>  
 
@@ -90,10 +111,11 @@ const EnvioForm = ({ data }) => {
                     <div className="form__item">
                         <label>Cedula/Nit destinatario</label>
                         <input
-                            {...register("nit_destinatario", { required: true })}
-                            aria-invalid={errors.nit_destinatario ? "true" : "false"}
+                            type="number"
+                            {...register("cedula", { required: true })}
+                            aria-invalid={errors.cedula ? "true" : "false"}
                         />
-                        {errors.nit_destinatario && <p>Field required</p>}
+                        {errors.cedula && <p>Field required</p>}
                     </div>    
                 </div>  
 
